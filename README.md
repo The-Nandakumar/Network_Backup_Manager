@@ -25,14 +25,25 @@ This project automates the backup of network device configurations and applies r
 
 ## Project Structure
 
-- [README.md](README.md) – project overview and usage instructions
-- [requirements.txt](requirements.txt) – Python package dependencies
-- [config/](config/) – YAML configuration files
-  - [config/inventory.yaml](config/inventory.yaml) – device inventory and schedules
-  - [config/settings.yaml](config/settings.yaml) – storage, log, and retention settings
-  - [config/vendors.yaml](config/vendors.yaml) – vendor-specific backup commands
-- [docs/configuration/](docs/configuration/) – configuration documentation
-- [engine/](engine/) – backup engine, connection handling, scheduler, and retention logic
+```
+backup_management/
+├── README.md                 # This file
+├── docs/configuration        # configuration documentation
+├── config/
+│   ├── inventory.yaml       # Device inventory and schedules
+│   ├── settings.yaml        # Storage paths and retention policies
+│   └── vendors.yaml         # Vendor-specific commands and settings
+└── engine/
+    ├── main.py              # Main backup orchestration script
+    ├── backup_engine.py     # Core backup execution logic
+    ├── connection.py        # Jump host and device connection manager
+    ├── scheduler.py         # Schedule evaluation logic
+    ├── retention.py         # Backup retention cleanup
+    ├── logger_config.py     # Logging configuration
+    └── config.py            # Configuration file paths
+```
+
+---
 
 ## Prerequisites
 
