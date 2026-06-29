@@ -1,4 +1,4 @@
-# Network Backup Manager
+# Data Driven Network Backup Manager
 
 This project backs up network device configurations and applies retention rules based on YAML configuration files in the config folder.
 
