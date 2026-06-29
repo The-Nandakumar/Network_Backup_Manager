@@ -4,13 +4,14 @@
 
 This project automates the backup of network device configurations and applies retention rules using YAML-based configuration files. It is designed for environments where device inventory, backup commands, retention policies, and logging settings need to be managed centrally and consistently.
 
-## Key Features
+### Key Features
 
-- YAML-driven configuration for inventory, storage, logging, and vendor-specific backup commands
-- Automated backup execution for network devices based on configured schedules
-- Retention management to remove older backups according to policy
-- Support for jump-host access and device authentication through environment variables
-- Centralized logging for backup activity and errors
+- **Multi-Vendor Support**: Cisco (NX-OS, IOS, WLC) and Juniper (Junos) devices
+- **Scheduled Backups**: Daily, weekly, and monthly backup schedules
+- **Jump Host Support**: Secure access through bastion/jump hosts
+- **Retention Policies**: Automatic cleanup of old backups based on configurable retention counts
+- **Comprehensive Logging**: Per-location logging for monitoring and troubleshooting
+- **YAML-Based Configuration**: Easy-to-manage configuration files
 
 ## Table of Contents
 
