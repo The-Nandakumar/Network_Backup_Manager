@@ -1,61 +1,119 @@
 # Data Driven Network Backup Manager
 
-This project backs up network device configurations and applies retention rules based on YAML configuration files in the config folder.
+## Overview
 
-## What this project does
+This project automates the backup of network device configurations and applies retention rules using YAML-based configuration files. It is designed for environments where device inventory, backup commands, retention policies, and logging settings need to be managed centrally and consistently.
 
-- Reads device inventory from config/inventory.yaml
-- Reads storage and logging settings from config/settings.yaml
-- Reads vendor-specific backup commands from config/vendors.yaml
-- Connects to devices using environment variables and saves backups to local storage
+## Key Features
 
-## Main configuration files
+- YAML-driven configuration for inventory, storage, logging, and vendor-specific backup commands
+- Automated backup execution for network devices based on configured schedules
+- Retention management to remove older backups according to policy
+- Support for jump-host access and device authentication through environment variables
+- Centralized logging for backup activity and errors
+
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Key Features](#key-features)
+3. [Project Structure](#project-structure)
+4. [Prerequisites](#prerequisites)
+5. [Installation](#installation)
+6. [Configuration](#configuration)
+7. [Running the Application](#running-the-application)
+
+## Project Structure
+
+- [README.md](README.md) – project overview and usage instructions
+- [requirements.txt](requirements.txt) – Python package dependencies
+- [config/](config/) – YAML configuration files
+  - [config/inventory.yaml](config/inventory.yaml) – device inventory and schedules
+  - [config/settings.yaml](config/settings.yaml) – storage, log, and retention settings
+  - [config/vendors.yaml](config/vendors.yaml) – vendor-specific backup commands
+- [docs/configuration/](docs/configuration/) – configuration documentation
+- [engine/](engine/) – backup engine, connection handling, scheduler, and retention logic
+
+## Prerequisites
+
+Before installing and running the project, make sure you have:
+
+- Python 3.8 or newer
+- pip for installing Python dependencies
+- Network access to the devices you want to back up
+- Valid credentials for the target devices and any jump host
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd Network_Backup_Manager
+   ```
+
+2. Create and activate a virtual environment:
+
+   ```bash
+   python -m venv .venv
+   ```
+
+   On Windows PowerShell:
+
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
+
+   On Linux/macOS:
+
+   ```bash
+   source .venv/bin/activate
+   ```
+
+3. Install the required packages:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Set the required environment variables:
+
+   Example on Windows PowerShell:
+
+   ```powershell
+   $env:JUMPHOST_USERNAME="jumpuser"
+   $env:JUMPHOST_PASSWORD="jump-password"
+   $env:JUMPHOST_IPADDRESS="10.0.0.10"
+   $env:USERNAME="deviceuser"
+   $env:PASSWORD="device-password"
+   ```
+
+   Example on Linux/macOS:
+
+   ```bash
+   export JUMPHOST_USERNAME="jumpuser"
+   export JUMPHOST_PASSWORD="jump-password"
+   export JUMPHOST_IPADDRESS="10.0.0.10"
+   export USERNAME="deviceuser"
+   export PASSWORD="device-password"
+   ```
+
+## Configuration
+
+The backup behavior is controlled by the YAML files in [config/](config/):
 
 - [config/inventory.yaml](config/inventory.yaml) – add locations, devices, IPs, and backup schedules
 - [config/settings.yaml](config/settings.yaml) – define storage paths, log paths, and retention counts
 - [config/vendors.yaml](config/vendors.yaml) – define vendor and platform backup command details
 
-## Configuration guide
-
-See the following guides for examples and step-by-step instructions:
+For step-by-step examples, see:
 
 - [docs/configuration/inventory.md](docs/configuration/inventory.md)
 - [docs/configuration/settings.md](docs/configuration/settings.md)
 - [docs/configuration/vendors.md](docs/configuration/vendors.md)
 
-## Environment variables
+## Running the Application
 
-The backup engine expects these environment variables:
-
-- JUMPHOST_USERNAME
-- JUMPHOST_PASSWORD
-- JUMPHOST_IPADDRESS
-- USERNAME
-- PASSWORD
-
-Example on Linux/macOS:
-
-```bash
-export JUMPHOST_USERNAME="jumpuser"
-export JUMPHOST_PASSWORD="jump-password"
-export JUMPHOST_IPADDRESS="10.0.0.10"
-export USERNAME="deviceuser"
-export PASSWORD="device-password"
-```
-
-Example on Windows PowerShell:
-
-```powershell
-$env:JUMPHOST_USERNAME="jumpuser"
-$env:JUMPHOST_PASSWORD="jump-password"
-$env:JUMPHOST_IPADDRESS="10.0.0.10"
-$env:USERNAME="deviceuser"
-$env:PASSWORD="device-password"
-```
-
-## Running the application
-
-Run the main script after editing the YAML files:
+After configuring the YAML files and environment variables, run:
 
 ```bash
 python engine/main.py
