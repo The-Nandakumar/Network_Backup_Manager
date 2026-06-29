@@ -1,0 +1,22 @@
+#STORAGE AND LOGS
+
+location:
+  chennai:
+    storage_path: "/home/yourname/backups/chennai"
+    log_path: "/home/yourname/logs/chennai.logs"
+    retention_count: 10
+
+  bangalore:
+    storage_path: "/home/yourname/backups/bangalore"
+    log_path: "/home/yourname/logs/bangalore.logs"
+    retention_count: 31
+
+  delhi:
+    storage_path: "/home/yourname/backups/delhi"
+    log_path: "/home/yourname/logs/delhi.logs"
+    retention_count: 90
+
+  mumbai:
+    storage_path: "/home/yourname/backups/mumbai"
+    log_path: "/home/yourname/logs/mumbai.logs"
+    retention_count: 12          

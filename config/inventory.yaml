@@ -1,0 +1,60 @@
+#DEVICE DETAILS, SCHEDULE TYPE, MODE OF BACKUP
+
+location:
+  chennai:
+    mode: backup_and_retention
+    devices:
+      - ip: 192.168.0.1
+        vendor: cisco
+        platform: nxos
+        schedule:
+          type: daily
+          
+      - ip: 192.168.0.2
+        vendor: cisco
+        platform: nxos
+        schedule:
+          type: daily
+
+  bangalore:
+    mode: backup_and_retention
+    devices:
+      - ip: 192.168.0.3
+        vendor: cisco
+        platform: ios
+        schedule:
+          type: monthly
+          date: 1
+          
+      - ip: 192.168.0.4
+        vendor: cisco
+        platform: ios
+        schedule:
+          type: monthly
+          date: 1
+
+  delhi:
+    mode: retention_only
+    devices:
+      - ip: 127.0.0.1 #Dummy IP for retention only, no backup
+        vendor: paloalto
+          
+      - ip: 127.0.0.1 #Dummy IP for retention only, no backup
+        vendor: paloalto
+
+  mumbai:
+    mode: backup_only
+    devices:
+      - ip: 192.168.0.7
+        vendor: juniper
+        platform: junos
+        schedule:
+          type: weekly
+          weekly: monday
+          
+      - ip: 192.168.0.8
+        vendor: juniper
+        platform: junos
+        schedule:
+          type: monthly
+          weekly: monday
